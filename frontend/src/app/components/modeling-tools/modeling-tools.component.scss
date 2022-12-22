@@ -1,0 +1,141 @@
+@import "src/styles";
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+
+*{
+  margin:0;
+  padding: 0;
+  outline: 0;
+}
+.filter{
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background: rgb(233,76,161);
+  background: -moz-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+  background: -webkit-linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+  background: linear-gradient(90deg, rgba(233,76,161,1) 0%, rgba(199,74,233,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#e94ca1",endColorstr="#c74ae9",GradientType=1);
+  opacity: .7;
+}
+table{
+  z-index: 2;
+  width: 60%;
+  border-collapse: collapse;
+  border-spacing: 0;
+  box-shadow: 0 2px 15px rgba(64,64,64,.7);
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  /*
+  margin-left: auto;
+  margin-right: auto;
+  */
+  margin: 0 4em;
+}
+td , th{
+  padding: 0.5em;
+  font-size: 0.75em;
+  text-align: left;
+}
+th{
+  background-color: var(--dark-blue);
+  color: #fafafa;
+  font-family: 'Open Sans', Sans-serif, serif;
+  font-weight: 200;
+  text-transform: uppercase;
+  text-align: center;
+}
+tr{
+  width: 100%;
+  background-color: #fafafa;
+  font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+  background-color: #eeeeee;
+}
+
+.title {
+  margin: 2rem;
+  color: black;
+  text-align: center;
+}
+
+.add-modeling-tool {
+  padding: 1em;
+  margin: 2em 0;
+  background: var(--android-green);
+  color: #ffffff;
+  border-radius: 4px;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  border: solid 3px #FFFFFF;
+}
+.add-modeling-tool:hover {
+  transition: 110ms;
+  outline: solid 5px var(--android-green);
+}
+
+/* My edits */
+.web-modeling-grid {
+  display: flex;
+}
+
+.search-column {
+  width: 20%;
+}
+
+.search-column-title {
+  background: grey;
+  padding: 2em;
+}
+
+.filter-columns {
+  padding: 1em;
+  margin: 2em 0;
+  background: var(--dark-blue);
+  color: #ffffff;
+  border-radius: 4px;
+  display: block;
+}
+
+.filter-columns:last-child > div {
+  display: grid;
+  margin-bottom: 0.5em;
+}
+
+.filter-columns > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.table-column {
+  width: 65%;
+}
+
+th, td {
+  /* border: 1px solid black; */
+  width: 100px;
+  overflow: hidden;
+}
+
+.search {
+  display: block;
+}
+
+.search > div {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+/*
+input, select {
+    width: 6em;
+}
+*/
+
+.filter-columns:last-child > input, select {
+  width: 6em;
+}

@@ -1,0 +1,373 @@
+<h1 class="title">
+  Modeling Tools
+</h1>
+
+<div class="web-modeling-grid">
+  <div class="search-column">
+    <form class="add-modeling-tool" (click)="open(content)">
+      Add a modeling tool
+    </form>
+    <form class="filter-columns">
+      <div>
+        <label for="openSource">Open Source</label>
+        <input type="checkbox" id="openSource"
+               [checked]="checkedColumns.openSource"
+               (change)="checkedColumns.openSource = !checkedColumns.openSource"
+        >
+      </div>
+      <div>
+        <label for="appFramework">App / Framework</label>
+        <input type="checkbox" id="appFramework"
+               [checked]="checkedColumns.appFramework"
+               (change)="checkedColumns.appFramework = !checkedColumns.appFramework"
+        >
+      </div>
+      <!-- TODO: Web App / Desktop App -->
+      <div>
+        <label for="category">Category</label>
+        <input type="checkbox" id="category"
+               [checked]="checkedColumns.category"
+               (change)="checkedColumns.category = !checkedColumns.category"
+        >
+      </div>
+      <div>
+        <label for="license">License</label>
+        <input type="checkbox" id="license"
+               [checked]="checkedColumns.license"
+               (change)="checkedColumns.license = !checkedColumns.license"
+        >
+      </div>
+      <div>
+        <label for="login">Log-in required</label>
+        <input type="checkbox" id="login"
+               [checked]="checkedColumns.loginRequired"
+               (change)="checkedColumns.loginRequired = !checkedColumns.loginRequired"
+        >
+      </div>
+      <div>
+        <label for="creator">Creator</label>
+        <input type="checkbox" id="creator"
+               [checked]="checkedColumns.creator"
+               (change)="checkedColumns.creator = !checkedColumns.creator"
+        >
+      </div>
+      <div>
+        <label for="operatingSystem">OS</label>
+        <input type="checkbox" id="operatingSystem"
+               [checked]="checkedColumns.os"
+               (change)="checkedColumns.os = !checkedColumns.os"
+        >
+      </div>
+      <div>
+        <label for="programmingLanguage">Programming Language used</label>
+        <input type="checkbox" id="programmingLanguage"
+               [checked]="checkedColumns.programmingLanguage"
+               (change)="checkedColumns.programmingLanguage = !checkedColumns.programmingLanguage"
+        >
+      </div>
+    </form>
+
+    <form class="filter-columns">
+      <button type="submit" hidden="true">submit</button>
+      <div>
+        <label for="searchTool">
+          Modeling Tool Name
+        </label>
+        <input type="text" name="searchTool" id="searchTool"
+               [(ngModel)]="modelingToolSearch.name" (ngModelChange)="searchModelingTool()">
+      </div>
+      <div>
+        <label for="selectOpenSource">
+          Open Source
+        </label>
+        <select name="selectOpenSource" id="selectOpenSource"
+                [(ngModel)]="modelingToolSearch.openSource" (ngModelChange)="searchModelingTool()">
+          <option [ngValue]="null"></option>
+          <option [ngValue]="true">Yes</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div>
+        <label for="selectAppFramework">
+          App / Framework
+        </label>
+        <select name="selectAppFramework" id="selectAppFramework"
+                [(ngModel)]="modelingToolSearch.appFramework" (ngModelChange)="searchModelingTool()">
+          <option></option>
+          <option value="APP">App</option>
+          <option value="FRAMEWORK">Framework</option>
+        </select>
+      </div>
+      <div>
+        <label for="selectWebApp">
+          Web App
+        </label>
+        <select name="selectWebApp" id="selectWebApp"
+                [(ngModel)]="modelingToolSearch.webApp" (ngModelChange)="searchModelingTool()">
+          <option [ngValue]="null"></option>
+          <option [ngValue]="true">Yes</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div>
+        <label for="selectDesktopApp">
+          Desktop App
+        </label>
+        <select name="selectDesktopApp" id="selectDesktopApp"
+                [(ngModel)]="modelingToolSearch.desktopApp" (ngModelChange)="searchModelingTool()">
+          <option [ngValue]="null"></option>
+          <option [ngValue]="true">Yes</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div>
+        <label for="selectCategory">
+          Category
+        </label>
+        <select name="selectCategory" id="selectCategory"
+                [(ngModel)]="modelingToolSearch.category" (ngModelChange)="searchModelingTool()">
+          <option></option>
+          <option value="BUSINESS TOOL">Business Tool</option>
+          <option value="DRAWING TOOL">Drawing Tool</option>
+          <option value="GRAPHICAL MODELING TOOL">Graphical Modeling Tool</option>
+          <option value="TEXT-BASED MODELING_TOOL">Text-based Modeling Tool</option>
+          <option value="METAMODELING TOOL">Metamodeling Tool</option>
+          <option value="MINDMAP TOOL">Mindmap Tool</option>
+          <option value="MIXED TEXTUAL AND DRAWING TOOL">Mixed Textual and Drawing Tool</option>
+          <option value="MIXED TEXTUAL AND GRAPHICAL MODELING_TOOL">Mixed Textual and Graphical Modeling Tool</option>
+        </select>
+      </div>
+      <div>
+        <label for="selectLicense">
+          License
+        </label>
+        <select name="selectLicense" id="selectLicense">
+          <option></option>
+          <option>Free</option>
+          <!--
+          TODO: Add more License options
+          -->
+        </select>
+      </div>
+      <div>
+        <label for="selectLogin">
+          Log-in required?
+        </label>
+        <select name="selectLogin" id="selectLogin"
+                [(ngModel)]="modelingToolSearch.loginRequired" (ngModelChange)="searchModelingTool()">
+          <option [ngValue]="null"></option>
+          <option [ngValue]="true">Yes</option>
+          <option [ngValue]="false">No</option>
+        </select>
+      </div>
+      <div>
+        <label for="searchCreator">
+          Creator
+        </label>
+        <input type="text" name="searchCreator" id="searchCreator"
+               [(ngModel)]="modelingToolSearch.creator" (ngModelChange)="searchModelingTool()">
+      </div>
+      <!--
+      TODO: Add Platform / OS Option
+      -->
+      <!--
+      <div>
+        <div>Programming Language's used</div>
+        <form>
+          <input type="checkbox" id="c" name="c" value="C">
+          <label for="c">C</label>
+          <input type="checkbox" id="java" name="java" value="Java">
+          <label for="java">Java</label>
+          <input type="checkbox" id="python" name="python" value="Python">
+          <label for="python">Python</label>
+        </form>
+      </div>
+      -->
+    </form>
+  </div>
+
+  <div class="table-column">
+    <table>
+      <tr>
+        <th>Modeling Tool</th>
+        <th *ngIf="checkedColumns.openSource">Open Source</th>
+        <th *ngIf="checkedColumns.appFramework">App/Framework</th>
+        <th>Web App</th>
+        <th>Desktop App</th>
+        <th *ngIf="checkedColumns.category">Category</th>
+        <th *ngIf="checkedColumns.license">License</th>
+        <th *ngIf="checkedColumns.loginRequired">Log-in required?</th>
+        <th *ngIf="checkedColumns.creator">Creator</th>
+        <th *ngIf="checkedColumns.os">Platform / OS</th>
+        <th *ngIf="checkedColumns.programmingLanguage">Programming Language used</th>
+      </tr>
+      <tr *ngFor="let tool of modelingToolsFiltered">
+        <td>
+          <a href="{{tool.link}}">{{tool.name}}</a>
+        </td>
+        <td *ngIf="checkedColumns.openSource">{{tool.openSource ? 'Yes' : 'No'}}</td>
+        <td *ngIf="checkedColumns.appFramework">{{tool.appFramework}}</td>
+        <td>{{tool.webApp ? 'Yes' : 'No'}}</td>
+        <td>{{tool.desktopApp ? 'Yes' : 'No'}}</td>
+        <td *ngIf="checkedColumns.category">{{tool.category}}</td>
+        <td *ngIf="checkedColumns.license">{{tool.license}}</td>
+        <td *ngIf="checkedColumns.loginRequired">{{tool.loginRequired ? 'Yes' : 'No'}}</td>
+        <td *ngIf="checkedColumns.creator">{{tool.creator}}</td>
+        <td *ngIf="checkedColumns.os">{{tool.platform}}</td>
+        <td *ngIf="checkedColumns.programmingLanguage">{{tool.programmingLanguages}}</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">New Modeling Tool</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)" novalidate>
+      <div class="form-group">
+        <label for="name">Name</label>
+        <div class="input-group">
+          <input id="name"
+                 class="form-control"
+                 name="name"
+                 #name="ngModel"
+                 [(ngModel)]="modelingToolCreate.name"
+                 required/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="link">Link</label>
+        <div class="input-group">
+          <input id="link"
+                 class="form-control"
+                 name="link"
+                 [(ngModel)]="modelingToolCreate.link"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="openSourceContent">Open Source</label>
+        <div class="input-group">
+          <select id="openSourceContent"
+                  name="openSource"
+                  class="form-control"
+                  [(ngModel)]="modelingToolCreate.openSource">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="false">No</option>
+            <option [ngValue]="true">Yes</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="appLibraryFramework">App / Library / Framework</label>
+        <div class="input-group">
+          <select id="appLibraryFramework"
+                  name="appLibraryFramework"
+                  class="form-control"
+                  [(ngModel)]="modelingToolCreate.appFramework">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="'APP'">App</option>
+            <option [ngValue]="'LIBRARY'">Library</option>
+            <option [ngValue]="'FRAMEWORK'">Framework</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="webApp">Is it provided as a web application?</label>
+        <div class="input-group">
+          <select id="webApp"
+                  name="webApp"
+                  class="form-control"
+                  [(ngModel)]="modelingToolCreate.webApp">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="false">No</option>
+            <option [ngValue]="true">Yes</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="desktopApp">Is it provided as a desktop application?</label>
+        <div class="input-group">
+          <select id="desktopApp"
+                  name="desktopApp"
+                  class="form-control"
+                  [(ngModel)]="modelingToolCreate.desktopApp">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="false">No</option>
+            <option [ngValue]="true">Yes</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="categoryContent">Category</label>
+        <div class="input-group">
+          <input id="categoryContent"
+                 name="category"
+                 class="form-control"
+                 [(ngModel)]="modelingToolCreate.category"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="licenseContent">License</label>
+        <div class="input-group">
+          <input id="licenseContent"
+                 name="license"
+                 class="form-control"
+                 [(ngModel)]="modelingToolCreate.license"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="loginSelect">Is log-in required?</label>
+        <div class="input-group">
+          <select id="loginSelect"
+                  name="loginSelect"
+                  class="form-control"
+                  [(ngModel)]="modelingToolCreate.loginRequired">
+            <option [ngValue]="null"></option>
+            <option [ngValue]="false">No</option>
+            <option [ngValue]="true">Yes</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="creatorContent">Creator</label>
+        <div class="input-group">
+          <input id="creatorContent"
+                 name="creator"
+                 class="form-control"
+                 [(ngModel)]="modelingToolCreate.creator"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="platformContent">Platform</label>
+        <div class="input-group">
+          <input id="platformContent"
+                 name="platform"
+                 class="form-control"
+                 [(ngModel)]="modelingToolCreate.platform"/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="programmingLanguages">Programming Languages</label>
+        <div class="input-group">
+          <input id="programmingLanguages"
+                 name="programmingLanguages"
+                 class="form-control"
+                 [(ngModel)]="modelingToolCreate.programmingLanguages"/>
+        </div>
+      </div>
+      <div class="border text-center">
+        <button type="submit" data-dismiss="modal" class="btn btn-info" [disabled]="!form.valid">
+          Submit
+        </button>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
