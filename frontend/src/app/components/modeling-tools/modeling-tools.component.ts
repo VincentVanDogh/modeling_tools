@@ -62,12 +62,16 @@ export class ModelingToolsComponent implements OnInit {
     for (const tool of this.modelingTools) {
       if (
         (this.contains(this.modelingToolSearch.name, tool.name)) &&
-        (this.modelingToolSearch.openSource === undefined || this.modelingToolSearch.openSource === tool.openSource) &&
+        (this.modelingToolSearch.openSource === null || this.modelingToolSearch.openSource === undefined ||
+          this.modelingToolSearch.openSource === tool.openSource) &&
         (this.contains(this.modelingToolSearch.appFramework, tool.appFramework)) &&
-        (this.modelingToolSearch.webApp === undefined || this.modelingToolSearch.webApp === tool.webApp) &&
-        (this.modelingToolSearch.desktopApp === undefined || this.modelingToolSearch.desktopApp === tool.desktopApp) &&
+        (this.modelingToolSearch.webApp === null || this.modelingToolSearch.webApp === undefined ||
+          this.modelingToolSearch.webApp === tool.webApp) &&
+        (this.modelingToolSearch.desktopApp === null || this.modelingToolSearch.desktopApp === undefined ||
+          this.modelingToolSearch.desktopApp === tool.desktopApp) &&
         (this.contains(this.modelingToolSearch.category, tool.category)) &&
-        (this.modelingToolSearch.loginRequired === undefined || this.modelingToolSearch.loginRequired === tool.loginRequired) &&
+        (this.modelingToolSearch.loginRequired === null || this.modelingToolSearch.loginRequired === undefined ||
+          this.modelingToolSearch.loginRequired === tool.loginRequired) &&
         (this.contains(this.modelingToolSearch.creator, tool.creator))
       ) {
         this.modelingToolsFiltered.push(tool);
